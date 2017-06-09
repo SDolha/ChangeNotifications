@@ -36,7 +36,7 @@ namespace ChangeNotifications
 
         protected void AddChangeHandlers([CallerMemberName]string propertyName = null)
         {
-            var propertyDefinition = GetType().GetProperty(propertyName);
+            var propertyDefinition = GetType().GetRuntimeProperty(propertyName);
             var relatedObject = propertyDefinition?.GetValue(this);
             var relatedItem = relatedObject as INotifyPropertyChanged;
             var relatedCollection = relatedObject as INotifyCollectionChanged;
@@ -54,7 +54,7 @@ namespace ChangeNotifications
 
         protected void RemoveChangeHandlers([CallerMemberName]string propertyName = null)
         {
-            var propertyDefinition = GetType().GetProperty(propertyName);
+            var propertyDefinition = GetType().GetRuntimeProperty(propertyName);
             var relatedObject = propertyDefinition?.GetValue(this);
             var relatedItem = relatedObject as INotifyPropertyChanged;
             var relatedCollection = relatedObject as INotifyCollectionChanged;
